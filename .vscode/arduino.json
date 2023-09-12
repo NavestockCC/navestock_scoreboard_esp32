@@ -1,0 +1,6 @@
+{
+    "board": "arduino:esp32:nano_nora",
+    "port": "/dev/tty.usbmodem3485187B05802",
+    "sketch": "scoreboard/scoreboard.ino",
+    "output": "scoreboard/build"
+}

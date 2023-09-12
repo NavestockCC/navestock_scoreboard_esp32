@@ -1,0 +1,22 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/Users/lefrascoetzee/Library/Arduino15/packages/arduino/hardware/esp32/2.0.11/cores/esp32"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/Users/lefrascoetzee/Library/Arduino15/packages/arduino/hardware/esp32/2.0.11/variants/arduino_nano_nora"
+  },
+  {
+    "Sourcefile": "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/build/sketch/scoreboard.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/build/sketch/AlphaNumericDisplayController.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
