@@ -292,6 +292,9 @@ bool AlphaNumericDisplayController::begin(){
  * @param - std::string arduinoSetupName - name of the arduino setup to use
 **/
 void AlphaNumericDisplayController::writeDataToDisplay(const std::vector<std::pair<std::string, int>> dataToDisplay, std::string arduinoSetupName) {
+   // Blink the RGB display Green and Blue to indicate writing data to display 
+    rgbBlink(2, 25, {LED_GREEN, LED_BLUE});
+
 //Format data ready for display    
     std::string formatResult;
     for (const auto pair : dataToDisplay) {
@@ -320,9 +323,7 @@ void AlphaNumericDisplayController::writeDataToDisplay(const std::vector<std::pa
     digitalWrite(_latchPin, LOW);
 
     // Send a byte of data to shift registers in series, for each char in charVectorToDisplay 
-    Serial.print("Data to display: ");
     for (char dispChar : charVectorToDisplay) {
-        Serial.print(dispChar);
             byte digitToDisplay = getDigitByte(dispChar);
 
             for (int i = 7; i >= 0; i--) { // Iterate over the 8 bits of the character 
@@ -332,7 +333,9 @@ void AlphaNumericDisplayController::writeDataToDisplay(const std::vector<std::pa
         }
     }
     digitalWrite(_latchPin, HIGH);
-    Serial.println();
+
+    // Blink RGB LED Red to indicate writeDataToDisplay completed
+    rgbBlink(2, 50, {LED_RED});
 }
 
 
@@ -392,3 +395,23 @@ void AlphaNumericDisplayController::displayTest(std::string arduinoSetupName, in
 
 
 
+/****************************************************************************************************************
+ * Utility function that blinks the RGB LED on the Arduino Nano
+ * @param int numberOfBlinks - the number of times to blink the LED
+ * @param int blinkSpeed - speed of the blinks in milliseconds
+ * @param std::vector<byte> colour - the colour of the LED - only valid inputs are LED_GREEN, LED_BLUE, LED_RED
+ * 
+*****************************************************************************************************************/
+void AlphaNumericDisplayController::rgbBlink(int numberOfBlinks, int blinkSpeed, std::vector<byte> colours){
+
+   byte rgbState[2] ={LOW, HIGH};
+
+   for(int nBlinks = 0; nBlinks < numberOfBlinks; nBlinks++){
+      for(int ledState = 0; ledState < 2; ledState++){
+         for(byte colour : colours ){
+            digitalWrite(colour, rgbState[ledState]);
+            delay(blinkSpeed);
+         }
+      }
+   }
+}

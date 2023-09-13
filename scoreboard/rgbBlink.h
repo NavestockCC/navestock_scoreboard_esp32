@@ -1,4 +1,4 @@
-void rgbBlink(int numerOfBlinks, int blinkSpeed, String colour){
+void rgbBlink_0(int numerOfBlinks, int blinkSpeed, String colour){
     byte rgbColour[] = {LED_GREEN, LED_BLUE, LED_RED};
     int rgbCoulorLegnth = sizeof(rgbColour);
     byte rgbState[] ={LOW, HIGH};
@@ -31,3 +31,5 @@ for(int nob=0; nob<numerOfBlinks; nob++){
     }
 
 }
+
+
