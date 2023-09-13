@@ -10,7 +10,7 @@ AlphaNumericDisplayController anDispCont = AlphaNumericDisplayController();
 
 #line 10 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void setup();
-#line 30 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
+#line 32 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void loop();
 #line 10 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void setup() {
@@ -23,6 +23,8 @@ void setup() {
   */
     anDispCont.addArduinoSetup("Top", 10, 11, 12);
     anDispCont.addArduinoSetup("Bottom", 2, 3, 4);
+    byte siftRegPinDefined[7] = {6, 7, 8, 9, 10, 11, 12};
+    anDispCont.addShiftRegisterPinSetup(siftRegPinDefined); 
     bool _begin = anDispCont.begin();
     while(!_begin){
         Serial.println("begin() failed. ERROR in arduinoSetup!!!!!!!!");
@@ -34,8 +36,8 @@ void setup() {
 
 
 void loop() {
-    anDispCont.displayTest("Top");
-    anDispCont.displayTest("Bottom");
+    anDispCont.displayTest("Top", 9);
+    anDispCont.displayTest("Bottom", 1);
 }
 
 
