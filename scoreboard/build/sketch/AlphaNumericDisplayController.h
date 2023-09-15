@@ -21,6 +21,7 @@ public:
     void writeDataToDisplay(const std::vector<std::pair<std::string, int>> dataToDisplay, std::string arduinoSetupName);
     void displayTest(std::string arduinoSetupName, int displayLength);
     void rgbBlink(int numberOfBlinks, int blinkSpeed, std::vector<byte> colours);
+    void clearDisplay(std::string arduinoSetupName, int displayLength);
     
 private:
     byte getDigitByte(const char input);

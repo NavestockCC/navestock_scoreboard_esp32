@@ -10,7 +10,7 @@ AlphaNumericDisplayController anDispCont = AlphaNumericDisplayController();
 
 #line 10 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void setup();
-#line 32 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
+#line 34 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void loop();
 #line 10 "/Users/lefrascoetzee/Documents/Arduino/navestock_scoreboard_esp32/scoreboard/scoreboard.ino"
 void setup() {
@@ -30,6 +30,8 @@ void setup() {
         Serial.println("begin() failed. ERROR in arduinoSetup!!!!!!!!");
     }
     anDispCont.printArduinoSetup();
+    anDispCont.clearDisplay("Top", 2);
+    anDispCont.clearDisplay("Bottom", 2);
 }
 
 

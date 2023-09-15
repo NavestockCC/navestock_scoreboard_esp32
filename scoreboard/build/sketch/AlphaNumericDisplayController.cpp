@@ -372,6 +372,9 @@ void AlphaNumericDisplayController::displayTest(std::string arduinoSetupName, in
     const int writeDataPin = getPinByNames(arduinoSetupName, "dataPin");
     const int writeClockPin = getPinByNames(arduinoSetupName, "clockPin");
     const int writeLatchPin = getPinByNames(arduinoSetupName, "latchPin");
+
+        //Clear the display and set to blank
+        clearDisplay(arduinoSetupName, displayLength);
         
         //Iterate over testRunArr Array and write data to the display
         int concatCounter = displayLength;
@@ -391,9 +394,20 @@ void AlphaNumericDisplayController::displayTest(std::string arduinoSetupName, in
             writeDataToDisplay({{testRunString, displayLength}}, arduinoSetupName);
             delay(500);
         }
+        //Clear the display and set to blank
+        clearDisplay(arduinoSetupName, displayLength);
     }
 
-
+/**
+ * Utility function to clear the display.
+* @param - std::string arduinoSetupName - name of the arduino setup to display the data on
+ * @param - int displayLength - number of 7Segment digits
+ * @returns void
+*/
+void AlphaNumericDisplayController::clearDisplay(std::string arduinoSetupName, int displayLength){
+    writeDataToDisplay({{"#", displayLength}}, arduinoSetupName);
+    delay(500);
+}
 
 
 /****************************************************************************************************************

@@ -24,6 +24,8 @@ void setup() {
         Serial.println("begin() failed. ERROR in arduinoSetup!!!!!!!!");
     }
     anDispCont.printArduinoSetup();
+    anDispCont.clearDisplay("Top", 2);
+    anDispCont.clearDisplay("Bottom", 2);
 }
 
 
