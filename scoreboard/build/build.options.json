@@ -3,7 +3,7 @@
   "builtInToolsFolders": "",
   "compiler.optimization_flags": "-Os",
   "customBuildProperties": "",
-  "fqbn": "arduino:esp32:nano_nora",
+  "fqbn": "arduino:esp32:nano_nora:PartitionScheme=default,PinNumbers=default,USBMode=default",
   "hardwareFolders": "/Users/lefrascoetzee/Library/Arduino15/packages",
   "otherLibrariesFolders": "/Users/lefrascoetzee/Documents/Arduino/libraries",
   "runtime.ide.version": "10607",
