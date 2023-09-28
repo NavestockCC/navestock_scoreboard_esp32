@@ -189,13 +189,14 @@ const byte digits[] = {
  * @param const char input - valid characters from a-z or 0-9 all other characters will be converted to 0b00000000(represents a blank on the display)
  * @return byte - value to push to the shift register to creat the character on the 7Segment Display
 */
-byte AlphaNumericDisplayController::getDigitByte(const char input)
+byte AlphaNumericDisplayController::getDigitByte(char input)
 {
     // Ensure the input is a valid character
-    if ((input >= 'a' && input <= 'z') || (input >= '0' && input <= '9'))
+    if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z') || (input >= '0' && input <= '9'))
     {
-        if (input >= 'a' && input <= 'z')
+        if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
         {
+            input = std::tolower(input); // convert alphabet input to lower case
             // Calculate the index for alphabetic characters ('a' corresponds to 0)
             int index = input - 'a';
             return digits[index];
@@ -303,7 +304,10 @@ void AlphaNumericDisplayController::writeDataToDisplay(const std::vector<std::pa
         int length = pair.second;
 
         if (length >= 0 && str.length() > 0) {
-            formatResult += formatLength(str, length);
+            std::string tmpReverseString = formatLength(str, length);
+            std::reverse(tmpReverseString.begin(), tmpReverseString.end());
+            formatResult.insert(0, tmpReverseString);
+            //formatResult += tmpReverseString;
         } else {
             // Handle invalid length (out of bounds)
             std::cerr << "Invalid length for string: " << str << std::endl;
@@ -312,8 +316,6 @@ void AlphaNumericDisplayController::writeDataToDisplay(const std::vector<std::pa
     }
 
     std::vector<char> charVectorToDisplay(formatResult.begin(), formatResult.end());
-    std::reverse(charVectorToDisplay.begin(), charVectorToDisplay.end());
-    
 
 // Send data to display
     int _dataPin = getPinByNames(arduinoSetupName, "dataPin");

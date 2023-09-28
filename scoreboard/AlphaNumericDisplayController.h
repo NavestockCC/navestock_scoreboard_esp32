@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <cctype>
 
 
 class AlphaNumericDisplayController {
